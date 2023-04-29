@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators } from "../state/index";
+import { bindActionCreators } from "redux";
+
 
 function CreateArea(props) {
-  const [isExpanded, setExpanded] = useState(false);
+  const isExpanded=useSelector(state=>state.expanded);
+  const dispatch= useDispatch();
+  const action=bindActionCreators(actionCreators,dispatch);
 
   const [note, setNote] = useState({
     title: "",
@@ -45,7 +51,7 @@ function CreateArea(props) {
         <textarea
           name="content"
           onClick={() => {
-            setExpanded(true);
+            action.notExpanded(isExpanded)
           }}
           onChange={handleChange}
           value={note.content}
