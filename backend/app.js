@@ -1,6 +1,6 @@
 const express=require("express");
 const cors=require("cors");
-const port=8000||process.env.PORT;
+const port=process.env.PORT || 8000;
 const dotenv=require("dotenv");
 
 const app=express();
@@ -17,7 +17,6 @@ mongoose.connection.once("open",()=>{
 app.use(cors());
 app.use(express.json());
 
-
 // Routes
 const NoteRouter=require("./routes/note-router");
 app.use("/",NoteRouter);
@@ -25,4 +24,4 @@ app.use("/",NoteRouter);
 // Listening to port
 app.listen(port,()=>{
     console.log("Server is running at",port);
-})
+});

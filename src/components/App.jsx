@@ -9,18 +9,18 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   useEffect(()=>{
-    axios.get("http://localhost:8000/note")
+    axios.get("https://keeper-database.onrender.com/note")
       .then((res)=>{
         setNotes(res.data);
       });
   })
 
   function addNote(newNote) {
-    axios.post("http://localhost:8000/note",newNote);
+    axios.post("https://keeper-database.onrender.com/note",newNote);
   }
 
   function deleteNote(id) {
-    axios.delete("http://localhost:8000/note/"+id);
+    axios.delete("https://keeper-database.onrender.com/note/"+id);
   }
 
   return (
