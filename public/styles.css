@@ -60,7 +60,8 @@ header p{
   text-align: center;
 }
 
-header a{
+header a,
+.auth-form button{
   padding: 0.7rem 1rem;
   border-radius: 5px;
   border: none;
@@ -167,6 +168,45 @@ form.create-note button {
   cursor: pointer;
   outline: none;
 }
-form.create-note button:hover{
-  transform: scale(1.1);
+form.create-note button:hover {
+  transform: scale(0.95) !important;
+  background: var(--first-color) !important;
+  box-shadow: 1px 1px 3px -1px black !important;
+}
+
+.auth-form{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.auth-form input{
+  width: 100%;
+  border: none;
+  padding: 10px;
+  outline: none;
+  font-size: 1em;
+  border-radius: 7px;
+  margin-bottom: 7px;
+  font-family: inherit;
+  resize: none;
+}
+.links{
+  display: flex;
+  gap: 2rem;
+}
+.auth-form a{
+  font-size: 0.85rem;
+  color: #ccc;
+}
+.auth-form button{
+  margin-top: 15px;
+  width: 150px;
+}
+.auth-form button:hover{
+  transform: scale(0.96);
 }

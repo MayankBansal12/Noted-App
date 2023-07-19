@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <header>
-        <h1>
-          <NoteAltIcon />
-          Noted
-        </h1>
+      <h1><NoteAltIcon /> Noted</h1>
       <Link to="/login">Login</Link>
     </header>
   );

@@ -4,14 +4,18 @@ import Footer from "./Footer";
 import Home from "./Home";
 import Login from "./Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Signup from "./Signup";
+import ForgotPassword from "./ForgotPassword";
 
 const App = () => {
   return (
     <BrowserRouter>
         <Header />
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route exact path="/" Component={Home} />
+            <Route exact path="/login" Component={Login} />
+            <Route exact path="/signup" Component={Signup} />
+            <Route exact path="/forgotpass" Component={ForgotPassword} />
         </Routes>
         <Footer />
     </BrowserRouter>
