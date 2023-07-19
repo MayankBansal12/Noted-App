@@ -6,17 +6,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators } from "../state/index";
 import { bindActionCreators } from "redux";
 
-
 function CreateArea(props) {
-  const isExpanded=useSelector(state=>state.expanded);
-  const dispatch= useDispatch();
-  const action=bindActionCreators(actionCreators,dispatch);
+  let isExpanded = useSelector(state => state.expanded);
+  const dispatch = useDispatch();
+  const action = bindActionCreators(actionCreators, dispatch);
 
   const [note, setNote] = useState({
     title: "",
     content: ""
   });
 
+  // Update value in 
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -28,6 +28,7 @@ function CreateArea(props) {
     });
   }
 
+  // Submit the note
   function submitNote(event) {
     props.onAdd(note);
     setNote({
@@ -38,7 +39,7 @@ function CreateArea(props) {
   }
 
   return (
-    <div>
+    <>
       <form className="create-note">
         {isExpanded && (
           <input
@@ -64,7 +65,7 @@ function CreateArea(props) {
           </Fab>
         </Zoom>
       </form>
-    </div>
+    </>
   );
 }
 
