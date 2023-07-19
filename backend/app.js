@@ -19,7 +19,10 @@ app.use(express.json());
 
 // Routes
 const NoteRouter=require("./routes/note-router");
+const UserRouter=require("./routes/user-router");
+
 app.use("/",NoteRouter);
+app.use("/user",UserRouter);
 
 // Listening to port
 app.listen(port,()=>{
