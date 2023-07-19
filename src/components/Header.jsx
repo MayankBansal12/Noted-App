@@ -1,5 +1,6 @@
 import React from "react";
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -8,7 +9,7 @@ function Header() {
           <NoteAltIcon />
           Noted
         </h1>
-      <button>Login</button>
+      <Link to="/login">Login</Link>
     </header>
   );
 }

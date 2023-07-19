@@ -1,3 +1,7 @@
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&display=swap');
+
+
 * {
   padding: 0;
   margin: 0;
@@ -9,23 +13,29 @@
   --text-color: white;
   --dark-color: #13c2ae;
 }
+
+/* For scrollbar at right */
 ::-webkit-scrollbar{
   display: none;
 }
 
 html {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 body {
   background: #3b3838;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
   color: var(--text-color);
 }
+a{
+  text-decoration: none;
+}
 #root{
   height: 100vh;
   width: 100%;
 }
 
+/* For Header Component */
 header {
   background-color: var(--first-color);
   padding: 1rem;
@@ -50,23 +60,26 @@ header p{
   text-align: center;
 }
 
-header button{
+header a{
   padding: 0.7rem 1rem;
   border-radius: 5px;
   border: none;
   width: 120px;
   font-size: 1rem;
-  cursor: pointer;
+  text-align: center;
   background: var(--dark-color);
   box-shadow: 2px 2px 4px -2px black;
   color: var(--text-color);
+  cursor: pointer;
   transition: all 0.2s;
 }
-header button:hover{
+header a:hover{
   transform: scale(0.975);
   box-shadow: 2px 2px 4px -1px black;
 }
 
+
+/* Footer Component */
 footer {
   position: absolute;
   bottom: 0;
@@ -85,6 +98,7 @@ footer p {
   overflow: scroll;
 }
 
+/* For Note Component */
 .note {
   background: #00ffe1c7;
   border-radius: 7px;
@@ -119,6 +133,7 @@ footer p {
   outline: none;
 }
 
+/* CreateArea Component */
 form.create-note {
   position: relative;
   width: 480px;
