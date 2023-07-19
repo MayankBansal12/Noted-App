@@ -1,10 +1,9 @@
 const mongoose=require("mongoose");
 
-const Schema=mongoose.Schema;
-const noteSchema={
+const noteSchema=new mongoose.Schema({
     title: String,
     content: String
-}
+});
 
 const Note=mongoose.model("Note",noteSchema);
 module.exports=Note;
