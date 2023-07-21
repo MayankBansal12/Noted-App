@@ -1,44 +1,52 @@
-const router = require("express").Router();
-let Note = require("../models/note-model");
+// notes-router.js
+
+const express = require("express");
+const router = express.Router();
+const Note = require("../models/note-model");
+const authMiddleware = require("../middlewares/auth");
 
 router
   .route("/note")
-  .get((req, res) => {
-    Note.find({})
-      .then((notes) => {
-        res.json(notes);
-      })
-      .catch((err) => res.status(400).json("Error in fetching the notes", err));
+  .get(authMiddleware, async (req, res) => {
+    try {
+      // Fetch notes from the database based on the userId
+      const notes = await Note.find({ userId: req.user });
+      res.json(notes);
+    } catch (error) {
+      res.status(500).json("Error", error);
+    }
   })
-  .post((req, res) => {
+  .post(authMiddleware, (req, res) => {
+    console.log(req.user);
     let newNote = new Note({
       title: req.body.title,
       content: req.body.content,
+      userId: req.body.userId
     });
     newNote
       .save()
-      .then(() => res.json("New Note Added!"))
-      .catch((err) => res.status(400).json("Error in adding the note", err));
+      .then(() => res.status(200).json({ message: "New Note Added!" }))
+      .catch((err) => res.status(400).json({ message: "Error in adding the note", error: err }));
   });
 
 router
   .route("/note/:Id")
-  .post((req, res) => {
+  .put(authMiddleware, (req, res) => {
     Note.findByIdAndUpdate(req.params.Id).then((note) => {
       note.title = req.body.title;
       note.content = req.body.content;
       note
         .save()
-        .then(() => res.json("Successfully updated!"))
-        .catch((err) => res.status(400).json("Error in updating!", err));
+        .then(() => res.json({ message: "Successfully updated!" }))
+        .catch((err) => res.status(400).json({ message: "Error in updating!", error: err }));
     });
   })
-  .delete((req, res) => {
+  .delete(authMiddleware, (req, res) => {
     Note.findByIdAndDelete(req.params.Id)
       .then(() => {
-        res.json("Succesfully Deleted!");
+        res.status(200).json({ message: "Successfully Deleted!" });
       })
-      .catch((err) => res.status(400).json("Error in fetching the notes", err));
+      .catch((err) => res.status(400).json({ message: "Error in fetching the notes", error: err }));
   });
 
 module.exports = router;

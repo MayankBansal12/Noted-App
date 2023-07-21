@@ -46,6 +46,7 @@ router.post("/login", async (req, res) => {
       expiresIn: "1h", // Set the token expiry time
     });
 
+    req.user=user._id;
     res.json({ token });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });

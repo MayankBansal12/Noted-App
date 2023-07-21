@@ -19,7 +19,6 @@ const Login = () => {
 
       // Save the token in local storage or a cookie for future authenticated requests
       localStorage.setItem("token", token);
-      console.log("Token for login is:",token);
 
       // Redirect to the home page 
       window.location.href = "/";
