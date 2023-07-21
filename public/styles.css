@@ -8,29 +8,32 @@
   box-sizing: border-box;
 }
 
-:root{
+:root {
   --first-color: #0de3cae3;
   --text-color: white;
   --dark-color: #13c2ae;
 }
 
 /* For scrollbar at right */
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   display: none;
 }
 
 html {
   font-family: 'Poppins', sans-serif;
 }
+
 body {
   background: #3b3838;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
   color: var(--text-color);
 }
-a{
+
+a {
   text-decoration: none;
 }
-#root{
+
+#root {
   height: 100vh;
   width: 100%;
 }
@@ -56,12 +59,12 @@ header h1 {
   gap: 0.25rem;
 }
 
-header p{
+header p {
   text-align: center;
 }
 
 header a,
-.auth-form button{
+.auth-form button {
   padding: 0.7rem 1rem;
   border-radius: 5px;
   border: none;
@@ -74,7 +77,8 @@ header a,
   cursor: pointer;
   transition: all 0.2s;
 }
-header a:hover{
+
+header a:hover {
   transform: scale(0.975);
   box-shadow: 2px 2px 4px -1px black;
 }
@@ -93,7 +97,7 @@ footer p {
   color: #ccc;
 }
 
-.notes-container{
+.notes-container {
   width: 100%;
   height: 59vh;
   overflow: scroll;
@@ -109,12 +113,14 @@ footer p {
   margin: 16px;
   float: left;
 }
+
 .note h1 {
   font-size: 1.1em;
   margin-bottom: 7px;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
 .note p {
   font-size: 1.1em;
   margin-bottom: 10px;
@@ -144,6 +150,7 @@ form.create-note {
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
+
 form.create-note input,
 form.create-note textarea {
   width: 100%;
@@ -154,6 +161,7 @@ form.create-note textarea {
   font-family: inherit;
   resize: none;
 }
+
 form.create-note button {
   position: absolute;
   right: 18px;
@@ -168,13 +176,14 @@ form.create-note button {
   cursor: pointer;
   outline: none;
 }
+
 form.create-note button:hover {
   transform: scale(0.95) !important;
   background: var(--first-color) !important;
   box-shadow: 1px 1px 3px -1px black !important;
 }
 
-.auth-form{
+.auth-form {
   width: 100%;
   height: 80%;
   display: flex;
@@ -184,7 +193,8 @@ form.create-note button:hover {
   align-items: center;
   text-align: center;
 }
-.auth-form input{
+
+.auth-form input {
   width: 100%;
   border: none;
   padding: 10px;
@@ -195,18 +205,22 @@ form.create-note button:hover {
   font-family: inherit;
   resize: none;
 }
-.links{
+
+.links {
   display: flex;
   gap: 2rem;
 }
-.auth-form a{
+
+.auth-form a {
   font-size: 0.85rem;
   color: #ccc;
 }
-.auth-form button{
+
+.auth-form button {
   margin-top: 15px;
   width: 150px;
 }
-.auth-form button:hover{
+
+.auth-form button:hover {
   transform: scale(0.96);
 }

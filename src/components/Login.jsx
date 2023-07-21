@@ -1,12 +1,32 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    // Handle login logic here
+  const handleLogin = async () => {
+    try {
+      // Send a POST request to the server with email and password
+      const response = await axios.post("http://localhost:8000/user/login", {
+        email,
+        password,
+      });
+
+      // If login is successful, the server will send back a token in the response
+      const token = response.data.token;
+
+      // Save the token in local storage or a cookie for future authenticated requests
+      localStorage.setItem("token", token);
+      console.log("Token for login is:",token);
+
+      // Redirect to the home page 
+      window.location.href = "/";
+    } catch (error) {
+      // If login fails, console log the error
+      console.error("Login failed:", error);
+    }
   };
 
   return (

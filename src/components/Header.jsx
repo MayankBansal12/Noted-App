@@ -6,7 +6,7 @@ function Header() {
   return (
     <header>
       <h1><NoteAltIcon /> Noted</h1>
-      <Link to="/login">Login</Link>
+      <Link to="/logout">Logout</Link>
     </header>
   );
 }
