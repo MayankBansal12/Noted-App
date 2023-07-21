@@ -17,7 +17,6 @@ router
     }
   })
   .post(authMiddleware, (req, res) => {
-    console.log(req.user);
     let newNote = new Note({
       title: req.body.title,
       content: req.body.content,

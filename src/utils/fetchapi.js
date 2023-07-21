@@ -5,9 +5,16 @@ const fetchapi = axios.create({
   baseURL: "http://localhost:8000", // Set the base URL for the API
   headers: {
     "Content-Type": "application/json",
-    // Get the token from local storage and include it in the "Authorization" header
-    Authorization: `${localStorage.getItem("token")}`,
   },
+});
+
+// Add an interceptor to set the "Authorization" header with the token from localStorage
+fetchapi.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers["Authorization"] = token;
+  }
+  return config;
 });
 
 export default fetchapi;

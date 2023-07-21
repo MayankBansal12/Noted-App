@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
-import axios from "axios";
 import { Navigate } from "react-router-dom";
 import fetchapi from "../utils/fetchapi";
 
 function Home() {
   const [notes, setNotes] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Set the initial value to true
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const token = localStorage.getItem("token");
 
   // Check if the user is logged in on component mount
   useEffect(() => {
-    const token = localStorage.getItem("token");
     if (!token) {
       // If the token doesn't exist, the user is not logged in, set isLoggedIn to false
       setIsLoggedIn(false);
@@ -46,7 +45,9 @@ function Home() {
 
   return (
     <>
-      <CreateArea onAdd={addNote} />
+      <CreateArea onAdd={addNote} 
+      // userId={userId} 
+      />
       <div className="notes-container">
         {notes.map((noteItem, index) => {
           return (

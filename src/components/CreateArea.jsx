@@ -13,7 +13,7 @@ function CreateArea(props) {
 
   const [note, setNote] = useState({
     title: "",
-    content: "",
+    content: ""
   });
 
   // Update value in 
@@ -30,7 +30,9 @@ function CreateArea(props) {
 
   // Submit the note
   function submitNote(event) {
-    props.onAdd(note);
+    // Set the userId in the note before adding
+    const noteWithUserId = { ...note, userId: props.userId };
+    props.onAdd(noteWithUserId);
     setNote({
       title: "",
       content: ""
