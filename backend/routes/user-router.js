@@ -32,7 +32,9 @@ router.post("/login", async (req, res) => {
     // Check if the user exists in the database
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ message: "User doesn't exist. Please sign up!" });
+      return res
+        .status(401)
+        .json({ message: "User doesn't exist. Please sign up!" });
     }
 
     // Compare the provided password with the hashed password in the database
@@ -46,7 +48,7 @@ router.post("/login", async (req, res) => {
       expiresIn: "1h", // Set the token expiry time
     });
 
-    req.user=user._id;
+    req.user = user._id;
     res.json({ token, userId: user._id });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
@@ -54,13 +56,13 @@ router.post("/login", async (req, res) => {
 });
 
 // Logout Route
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   // Get the user's token from the request headers
   const token = req.headers.authorization;
 
   // If the token is not present or is empty, the user is not logged in
   if (!token) {
-    return res.status(401).json({ message: 'User is not logged in' });
+    return res.status(401).json({ message: "User is not logged in" });
   }
 
   try {
@@ -68,15 +70,19 @@ router.post('/logout', (req, res) => {
     const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
 
     // The token is valid, but will mark it as expired by setting its expiration to the current time
-    const expiredToken = jwt.sign({ userId: decodedToken.userId }, process.env.SECRET_KEY, {
-      expiresIn: 0,
-    });
+    const expiredToken = jwt.sign(
+      { userId: decodedToken.userId },
+      process.env.SECRET_KEY,
+      {
+        expiresIn: 0,
+      }
+    );
 
     // Send a response to the client to indicate successful logout
-    res.json({ message: 'User logged out successfully' });
+    res.json({ message: "User logged out successfully" });
   } catch (error) {
     // If the token is invalid or expired, it's already considered as logged out
-    return res.status(401).json({ message: 'User is not logged in' });
+    return res.status(401).json({ message: "User is not logged in" });
   }
 });
 

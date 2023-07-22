@@ -23,20 +23,20 @@ function Home() {
       fetchapi.get("/note").then((res) => {
         setNotes(res.data);
       })
-      .catch((error) => {
-        console.error("Error fetching notes:", error);
-      });
+        .catch((error) => {
+          console.error("Error fetching notes:", error);
+        });
     }
   }, [notes]); // Empty dependency array ensures the effect runs only once on component mount
 
   // Add new note
   function addNote(newNote) {
-    fetchapi.post(`http://localhost:8000/note`, newNote);
+    fetchapi.post(`${process.env.REACT_APP_SERVER_URL}/note`, newNote);
   }
 
   // Delete note
   function deleteNote(id) {
-    fetchapi.delete("http://localhost:8000/note/" + id);
+    fetchapi.delete(`${process.env.REACT_APP_SERVER_URL}/note/` + id);
   }
 
   // If the user is not logged in, redirect to the login page

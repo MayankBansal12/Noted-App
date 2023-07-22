@@ -3,18 +3,19 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Logout = () => {
-    const token=localStorage.getItem("token");
+    const token = localStorage.getItem("token");
     const handleLogout = async () => {
         try {
             // Send a POST request to the server to logout the user
-            await axios.post("http://localhost:8000/user/logout", {}, {
-                    headers: {
-                        Authorization: `${token}`,
-                    },
-                }
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/logout`, {}, {
+                headers: {
+                    Authorization: `${token}`,
+                },
+            }
             );
             // After successful logout, remove the token from localStorage
             localStorage.removeItem("token");
+            localStorage.removeItem("userId");
 
             // Redirect the user to the login page
             window.location.href = "/login";

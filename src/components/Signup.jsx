@@ -10,7 +10,7 @@ const Signup = () => {
   const handleSignup = async () => {
     try {
       // Send a POST request to the server with email and password
-      const response = await axios.post("http://localhost:8000/user/signup", {
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/signup`, {
         username,
         email,
         password,

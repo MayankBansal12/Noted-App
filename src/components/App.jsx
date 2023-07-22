@@ -11,15 +11,15 @@ import Logout from "./Logout";
 const App = () => {
   return (
     <BrowserRouter>
-        <Header />
-        <Routes>
-            <Route exact path="/" Component={Home} />
-            <Route exact path="/login" Component={Login} />
-            <Route exact path="/logout" Component={Logout} />
-            <Route exact path="/signup" Component={Signup} />
-            <Route exact path="/forgotpass" Component={ForgotPassword} />
-        </Routes>
-        <Footer />
+      <Header />
+      <Routes>
+        <Route exact path="/" Component={Home} />
+        <Route exact path="/login" Component={Login} />
+        <Route exact path="/logout" Component={Logout} />
+        <Route exact path="/signup" Component={Signup} />
+        <Route exact path="/forgotpass" Component={ForgotPassword} />
+      </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

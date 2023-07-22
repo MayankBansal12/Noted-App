@@ -12,12 +12,12 @@ const ForgotPassword = () => {
     <div className="auth-form">
       <h1>Forgot Password</h1>
       <form>
-          <input
-            type="email"
-            value={email}
-            placeholder="Enter your Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <input
+          type="email"
+          value={email}
+          placeholder="Enter your Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <button type="button" onClick={handleResetPassword}>Reset Password</button>
       </form>
       <p>

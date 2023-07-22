@@ -9,14 +9,14 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       // Send a POST request to the server with email and password
-      const response = await axios.post("http://localhost:8000/user/login", {
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/user/login`, {
         email,
         password,
       });
 
       // If login is successful, the server will send back a token and userId in the response
       const token = response.data.token;
-      const userId=response.data.userId;
+      const userId = response.data.userId;
 
       // Save the token in local storage or a cookie for future authenticated requests
       localStorage.setItem("token", token);

@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create an instance of axios with the common headers
 const fetchapi = axios.create({
-  baseURL: "http://localhost:8000", // Set the base URL for the API
+  baseURL: process.env.REACT_APP_SERVER_URL,
   headers: {
     "Content-Type": "application/json",
   },

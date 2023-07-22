@@ -20,12 +20,16 @@ router
     let newNote = new Note({
       title: req.body.title,
       content: req.body.content,
-      userId: req.body.userId
+      userId: req.body.userId,
     });
     newNote
       .save()
       .then(() => res.status(200).json({ message: "New Note Added!" }))
-      .catch((err) => res.status(400).json({ message: "Error in adding the note", error: err }));
+      .catch((err) =>
+        res
+          .status(400)
+          .json({ message: "Error in adding the note", error: err })
+      );
   });
 
 router
@@ -37,7 +41,9 @@ router
       note
         .save()
         .then(() => res.json({ message: "Successfully updated!" }))
-        .catch((err) => res.status(400).json({ message: "Error in updating!", error: err }));
+        .catch((err) =>
+          res.status(400).json({ message: "Error in updating!", error: err })
+        );
     });
   })
   .delete(authMiddleware, (req, res) => {
@@ -45,7 +51,11 @@ router
       .then(() => {
         res.status(200).json({ message: "Successfully Deleted!" });
       })
-      .catch((err) => res.status(400).json({ message: "Error in fetching the notes", error: err }));
+      .catch((err) =>
+        res
+          .status(400)
+          .json({ message: "Error in fetching the notes", error: err })
+      );
   });
 
 module.exports = router;
