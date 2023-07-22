@@ -47,7 +47,7 @@ router.post("/login", async (req, res) => {
     });
 
     req.user=user._id;
-    res.json({ token });
+    res.json({ token, userId: user._id });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
   }

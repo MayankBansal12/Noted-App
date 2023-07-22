@@ -14,11 +14,13 @@ const Login = () => {
         password,
       });
 
-      // If login is successful, the server will send back a token in the response
+      // If login is successful, the server will send back a token and userId in the response
       const token = response.data.token;
+      const userId=response.data.userId;
 
       // Save the token in local storage or a cookie for future authenticated requests
       localStorage.setItem("token", token);
+      localStorage.setItem("userId", userId);
 
       // Redirect to the home page 
       window.location.href = "/";

@@ -8,6 +8,7 @@ function Home() {
   const [notes, setNotes] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
 
   // Check if the user is logged in on component mount
   useEffect(() => {
@@ -26,7 +27,7 @@ function Home() {
         console.error("Error fetching notes:", error);
       });
     }
-  }, []); // Empty dependency array ensures the effect runs only once on component mount
+  }, [notes]); // Empty dependency array ensures the effect runs only once on component mount
 
   // Add new note
   function addNote(newNote) {
@@ -45,9 +46,7 @@ function Home() {
 
   return (
     <>
-      <CreateArea onAdd={addNote} 
-      // userId={userId} 
-      />
+      <CreateArea onAdd={addNote} userId={userId} />
       <div className="notes-container">
         {notes.map((noteItem, index) => {
           return (
