@@ -2,10 +2,27 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
+import Noty from "noty";
+import 'noty/lib/noty.css';
+import "noty/lib/themes/semanticui.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // Noty js notification
+  const successNoty = new Noty({
+    text: "Login Successful!",
+    type: "success",
+    theme: "semanticui",
+    timeout: 3000,
+  });
+  const errorNoty = new Noty({
+    text: "Incorrect email or password!",
+    type: "error",
+    theme: "semanticui",
+    timeout: 3000,
+  });
 
   const handleLogin = async () => {
     try {
@@ -24,9 +41,11 @@ const Login = () => {
       localStorage.setItem("userId", userId);
 
       // Redirect to the home page 
+      successNoty.show();
       window.location.href = "/home";
     } catch (error) {
-      // If login fails, console log the error
+      // If login fails, show the error
+      errorNoty.show();
       console.error("Login failed:", error);
     }
   };

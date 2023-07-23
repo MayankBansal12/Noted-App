@@ -5,12 +5,35 @@ import { Navigate } from "react-router-dom";
 import fetchapi from "../utils/fetchapi";
 import Header from "./Header";
 import Footer from "./Footer";
+import Noty from "noty";
+import 'noty/lib/noty.css';
+import "noty/lib/themes/semanticui.css";
 
 function Home() {
   const [notes, setNotes] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
+
+  // Noty js notification
+  const successAdd = new Noty({
+    text: "Successfully Added!",
+    type: "success",
+    theme: "semanticui",
+    timeout: 3000,
+  });
+  const successDel = new Noty({
+    text: "Note Deleted!",
+    type: "success",
+    theme: "semanticui",
+    timeout: 3000,
+  });
+  const errorNoty = new Noty({
+    text: "There's some issue,try again!",
+    type: "error",
+    theme: "semanticui",
+    timeout: 3000,
+  });
 
   // Check if the user is logged in on component mount
   useEffect(() => {
@@ -33,12 +56,12 @@ function Home() {
 
   // Add new note
   function addNote(newNote) {
-    fetchapi.post(`${process.env.REACT_APP_SERVER_URL}/note`, newNote);
+    fetchapi.post(`${process.env.REACT_APP_SERVER_URL}/note`, newNote).then(() => successAdd.show()).catch(() => errorNoty.show());
   }
 
   // Delete note
   function deleteNote(id) {
-    fetchapi.delete(`${process.env.REACT_APP_SERVER_URL}/note/` + id);
+    fetchapi.delete(`${process.env.REACT_APP_SERVER_URL}/note/` + id).then(() => successDel.show()).catch(() => errorNoty.show());
   }
 
   // If the user is not logged in, redirect to the login page
@@ -48,7 +71,7 @@ function Home() {
 
   return (
     <>
-    <Header logout={true} />
+      <Header logout={true} />
       <CreateArea onAdd={addNote} userId={userId} />
       <div className="notes-container">
         {notes.map((noteItem, index) => {
@@ -63,7 +86,7 @@ function Home() {
           );
         })}
       </div>
-    <Footer />
+      <Footer />
     </>
   );
 }

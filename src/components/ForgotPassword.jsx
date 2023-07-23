@@ -6,7 +6,7 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState('');
 
   const handleResetPassword = () => {
-    // Handle reset password logic here
+    // Reset password logic here
   };
 
   return (
@@ -21,7 +21,7 @@ const ForgotPassword = () => {
             placeholder="Enter your Email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button type="button" onClick={handleResetPassword}>Reset Password</button>
+          <button type="button" onClick={handleResetPassword} disabled>Reset Password</button>
         </form>
         <p>
           Retry Login Again? <Link to="/login">Login</Link>

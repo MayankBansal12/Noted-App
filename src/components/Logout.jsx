@@ -2,9 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
+import Noty from "noty";
+import 'noty/lib/noty.css';
+import "noty/lib/themes/semanticui.css";
 
 const Logout = () => {
     const token = localStorage.getItem("token");
+    // Noty js notification
+    const successNoty = new Noty({
+        text: "Logout Successful!",
+        type: "success",
+        theme: "semanticui",
+        timeout: 3000,
+    });
+    const errorNoty = new Noty({
+        text: "Error, Try again!",
+        type: "error",
+        theme: "semanticui",
+        timeout: 3000,
+    });
+
     const handleLogout = async () => {
         try {
             // Send a POST request to the server to logout the user
@@ -19,9 +36,11 @@ const Logout = () => {
             localStorage.removeItem("userId");
 
             // Redirect the user to the login page
+            successNoty.show();
             window.location.href = "/login";
         } catch (error) {
             // If logout fails, handle the error here
+            errorNoty.show();
             console.error("Logout failed:", error);
         }
     };
