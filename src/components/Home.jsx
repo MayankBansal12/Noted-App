@@ -3,6 +3,8 @@ import Note from "./Note";
 import CreateArea from "./CreateArea";
 import { Navigate } from "react-router-dom";
 import fetchapi from "../utils/fetchapi";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function Home() {
   const [notes, setNotes] = useState([]);
@@ -46,6 +48,7 @@ function Home() {
 
   return (
     <>
+    <Header logout={true} />
       <CreateArea onAdd={addNote} userId={userId} />
       <div className="notes-container">
         {notes.map((noteItem, index) => {
@@ -60,6 +63,7 @@ function Home() {
           );
         })}
       </div>
+    <Footer />
     </>
   );
 }

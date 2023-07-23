@@ -6,7 +6,7 @@ let User = require("../models/user-model");
 // Signup Route
 router.post("/signup", async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { email, password } = req.body;
 
     // Check if the user already exists in the database
     const existingUser = await User.findOne({ email });
@@ -15,7 +15,7 @@ router.post("/signup", async (req, res) => {
     }
 
     // Create a new user and save to the database
-    const newUser = new User({ username, email, password });
+    const newUser = new User({ email, password });
     await newUser.save();
 
     res.status(201).json({ message: "User created successfully" });

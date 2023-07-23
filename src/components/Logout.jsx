@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Header from "./Header";
 
 const Logout = () => {
     const token = localStorage.getItem("token");
@@ -27,13 +28,16 @@ const Logout = () => {
 
 
     return (
-        <div className="auth-form">
-            <h1>Are you sure you want to logout from your account?</h1>
-            <button type="button" onClick={handleLogout}>Yes, Logout!</button>
-            <p>
-                Back to <Link to="/">Home</Link>
-            </p>
-        </div>
+        <>
+            <Header />
+            <div className="auth-form">
+                <h1>Are you sure you want to logout from your account?</h1>
+                <button type="button" onClick={handleLogout}>Yes, Logout!</button>
+                <p>
+                    Back to <Link to="/">Home</Link>
+                </p>
+            </div>
+        </>
     );
 };
 

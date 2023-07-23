@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Header from "./Header";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ const Login = () => {
       localStorage.setItem("userId", userId);
 
       // Redirect to the home page 
-      window.location.href = "/";
+      window.location.href = "/home";
     } catch (error) {
       // If login fails, console log the error
       console.error("Login failed:", error);
@@ -31,32 +32,35 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-form">
-      <h1>Login</h1>
-      <form>
-        <input
-          type="email"
-          value={email}
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          value={password}
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="button" onClick={handleLogin}>Login</button>
-      </form>
-      <div className="links">
-        <p>
-          Don't have an account? <Link to="/signup">Sign up</Link>
-        </p>
-        <p>
-          Forgot your password? <Link to="/forgotpass">Reset</Link>
-        </p>
+    <>
+      <Header />
+      <div className="auth-form">
+        <h1>Login</h1>
+        <form>
+          <input
+            type="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="button" onClick={handleLogin}>Login</button>
+        </form>
+        <div className="links">
+          <p>
+            Don't have an account? <Link to="/signup">Sign up</Link>
+          </p>
+          <p>
+            Forgot your password? <Link to="/forgotpass">Reset</Link>
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
