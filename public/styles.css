@@ -95,7 +95,7 @@ a {
 }
 
 .welcome-page img {
-  width: 50%;
+  width: 40%;
   transform: skew(8deg, -5deg);
 }
 
@@ -292,7 +292,26 @@ form.create-note button:hover {
     font-size: 2rem;
   }
 
-  .welcome-page .content {
+  /* .welcome-page .content {
     height: 90%;
+  } */
+}
+
+@media screen and (max-width: 991px) {
+  .welcome-page .content {
+    flex-direction: column !important;
+    margin-top: 3rem;
+    justify-content: center;
+    gap: 5rem;
+    height: 100%;
+    align-items: center;
+  }
+  .welcome-page img{
+    width: 50vh;
+  }
+}
+@media screen and (max-width: 425px) {
+  .welcome-page .content{
+    width: 100%;
   }
 }
