@@ -53,7 +53,7 @@ const Logout = () => {
                 <h1>Are you sure you want to logout from your account?</h1>
                 <button type="button" onClick={handleLogout}>Yes, Logout!</button>
                 <p>
-                    Back to <Link to="/">Home</Link>
+                    Back to <Link to="/home">Home</Link>
                 </p>
             </div>
         </>

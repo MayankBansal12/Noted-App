@@ -3,10 +3,13 @@
 
 NOTED is a simple note-taking application built using the MERN stack (MongoDB, Express, React, and Node.js). It allows users to create an account, take notes, and manage their personal notes securely.
 
+<img src="https://res.cloudinary.com/dwuyp1nss/image/upload/v1690240848/Website%20Demo/lak93vkzryojotuajefy.png" alt="Landing Page">
+
 ## Table of Contents
 - [Features](#features)
-- [Demo](#visit)
+- [Test it out!](#visit)
 - [Usage](#usage)
+- [Site Demo](#demo)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
 - [Credits](#credits)
@@ -48,6 +51,7 @@ NOTED is a simple note-taking application built using the MERN stack (MongoDB, E
 ## Visit
 You can visit and start using the Noted app [here](https://noted-app-ten.vercel.app/)
 
+<img src="https://res.cloudinary.com/dwuyp1nss/image/upload/v1690240845/Website%20Demo/ydet35yiiidfcpsfydkm.png" alt="Home Page" />
 
 ## Usage
 1. Register an account on the signup page.
@@ -64,9 +68,8 @@ You can visit and start using the Noted app [here](https://noted-app-ten.vercel.
 - Axios: HTTP client for making API requests
 - Noty: JavaScript library for notifications
 
-
-<!-- ## Site Demo -->
-<!-- Watch site demo [here](https://clipchamp.com/watch/HQkgMLMnGOT) -->
+## Demo
+Watch site demo [here](https://drive.google.com/file/d/1TZyWIQBO5v3S1nYpJ1nguiuSkC16NT7v/view?usp=sharing)
 
 ## Contributing
 Contributions are welcome! If you find any bugs or have ideas for new features, please open an issue or submit a pull request.
