@@ -32,9 +32,6 @@ const Signup = () => {
         password,
       });
 
-      // If sign-up is successful, the server will send back a response with a success message
-      console.log("Sign-up successful:", response.data.message);
-
       // Redirect to the login page after successful sign-up
       successNoty.show();
       window.location.href = "/login";
